@@ -79,7 +79,8 @@ a {
   color: #FAF9F6;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: #f7d560;
 }
 
@@ -259,14 +260,17 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
   margin: 2em auto 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 @media screen and (min-width: 600px) {
@@ -330,13 +334,44 @@ footer .contact__info--item {
   padding: 0 1rem;
 }
 
-.nav--home .nav__item:last-child {
-  padding-right: 2rem;
-}
-
 .nav--intro {
   grid-area: nav-area;
   padding-top: 1em;
+}
+
+.nav--home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-size: var(--fs-h1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 
 @media screen and (min-width: 600px) {
@@ -352,6 +387,20 @@ footer .contact__info--item {
   }
   .nav--intro .nav__item:last-child {
     padding-right: 0;
+  }
+  .nav--home {
+    position: static;
+    background: none;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    font-size: var(--body);
+    -webkit-transform: none;
+            transform: none;
+  }
+  .nav--home .nav__item:last-child {
+    padding-right: 2rem;
   }
 }
 
@@ -381,7 +430,8 @@ footer .contact__info--item {
   background: #FAF9F6;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   color: #FAF9F6;
 }
 
@@ -394,8 +444,92 @@ footer .contact__info--item {
   bottom: -0.65em;
 }
 
-.projects__list--item:hover img {
+@media screen and (min-width: 600px) {
+  .nav--toggle {
+    display: none;
+  }
+}
+
+.nav--toggle {
+  position: absolute;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav-open .nav {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.nav-open .nav--toggle {
+  position: fixed;
+}
+
+.nav-open .hamburger {
+  -webkit-transform: rotate(0.625turn);
+          transform: rotate(0.625turn);
+}
+
+.nav-open .hamburger::before {
+  -webkit-transform: rotate(90deg) translateX(-4px);
+          transform: rotate(90deg) translateX(-4px);
+}
+
+.nav-open .hamburger::after {
+  opacity: 0;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  background: #FAF9F6;
+  width: 1.25em;
+  height: 2px;
+  border-radius: 1em;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+}
+
+.hamburger::before {
+  top: 4px;
+}
+
+.hamburger::after {
+  bottom: 4px;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hamburger:hover,
+.hamburger:hover::after,
+.hamburger:hover::before {
+  background: #f7d560;
+}
+
+.projects__list--item:hover img,
+.projects__list--item:focus img {
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
+  background-color: #f7d560;
 }
 /*# sourceMappingURL=styles.css.map */
